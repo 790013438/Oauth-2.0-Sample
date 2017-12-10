@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The World's Most Interesting Infographic</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div class=".container">
+            <div id="response"></div>
+        </div>
+    </body>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Extract fragment from URL
+            var fragment = location.hash.replace('#', '');
+
+            // Detect presence of response by examining frgment
+            if (fragment != '') {
+                // Response detected!
+            } else {
+                // No response detected:(
+            }
+
+            // Extract snippets from URL
+            var snippets = location.search.replace('?', '');
+
+            // Detect presence of response by examining snippets
+            if (snippets != "") {
+                var responseProperties = snippets.split('&');
+                // Isolate access token and write it to the "response" div
+                var accessToken = "";
+                var i = 0;
+                for (i = 0; i < responseProperties.length && 
+                    responseProperties[i].indexOf('code=') !== 0; i++) {}
+                code = responseProperties[i].split('=')[1];
+                $('#response').html('code: ' + code);
+            } else {
+                $('#response').html('No code detected.');
+            }
+        });
+    </script>
+</html>
