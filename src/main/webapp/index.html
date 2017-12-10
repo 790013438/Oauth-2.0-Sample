@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The World's Most Interesting Infographic</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <button id="goButton" type="button" class="btn-group">Go!</button>
+        <div id="results"></div>
+    </body>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#goButton').click(makeRequest);
+        });
+        function makeRequest() {
+            // TODO: Make authorization request
+            alert("Button clicked!");
+        }
+    </script>
+</html>
