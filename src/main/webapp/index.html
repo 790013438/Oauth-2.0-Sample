@@ -14,8 +14,17 @@
             $('#goButton').click(makeRequest);
         });
         function makeRequest() {
-            // TODO: Make authorization request
-            alert("Button clicked!");
+            // Define properties
+            var AUTH_ENDPOINT = 'http://github.com/login/oauth/authorize';
+            var CLIENT_ID = 'a20bc0c080b542a9b882';
+            var REDIRECT_URI = 'http://floyd10086.com/callback.html';
+
+            // Build authorization request endpoint
+            var requestEndpoint = AUTH_ENDPOINT + '?' + 'client_id=' + encodeURIComponent(CLIENT_ID) + '&' +
+                'redirect_uri=' + encodeURIComponent(REDIRECT_URI);
+
+            // Send to authorization request endpoint
+            window.location.href = requestEndpoint;
         }
     </script>
 </html>
