@@ -10,7 +10,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
@@ -46,7 +49,23 @@ public class OAuthCallbackListener extends HttpServlet {
             CloseableHttpClient httpClient = HttpClients.createDefault();
             HttpResponse httpResponse = httpClient.execute(httpPost);
 
-            // TODO: Handle access token response
+            // Handel access token response
+            Reader reader = new InputStreamReader(httpResponse.getEntity().getContent());
+            BufferedReader bufferedReader = new BufferedReader(reader);
+            String line = bufferedReader.readLine();
+
+            // Isolate access token
+            String accessToken = null;
+            String[] responseProperties = line.split("&");
+            for (String responseProperty : responseProperties) {
+                if (responseProperty.startsWith("access_token=")) {
+                    accessToken = responseProperty.split("=")[1];
+                    break;
+                }
+            }
+
+            // TODO: Request profile and feed data with access token
+
             httpClient.close();
 
         } else {
