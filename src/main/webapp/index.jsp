@@ -16,7 +16,7 @@
             // Define properties
             var AUTH_ENDPOINT = 'https://github.com/login/oauth/authorize';
             var CLIENT_ID = 'a20bc0c080b542a9b882';
-            var REDIRECT_URI = 'http://floyd10086.com/callback.html';
+            var REDIRECT_URI = 'http://floyd10086.com/callback';
             var SCOPE = 'public_repo';
 
             // Build authorization request endpoint
